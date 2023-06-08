@@ -28,7 +28,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     private $email;
 
     #[ORM\Column(type: 'json')]
-    private $roles = [];
+    private $roles = []; //administrator or not
 
     #[ORM\Column(type: 'string')]
     private $password;

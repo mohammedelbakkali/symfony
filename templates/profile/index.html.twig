@@ -9,12 +9,15 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/benoit/Documents/Demos/ecommerce-sf6/src/Controller/ProfileController.php'|file_link(0) }}">src/Controller/ProfileController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/benoit/Documents/Demos/ecommerce-sf6/templates/profile/index.html.twig'|file_link(0) }}">templates/profile/index.html.twig</a></code></li>
-    </ul>
+    <h1>Profile:</h1>
+    <div class="card" style="width: 30rem;">
+        <div class="card-body">
+          <h3 class="card-title">{{ app.user.firstname }} {{ app.user.lastname }}</h3>
+          <p class="card-text">Email address: {{ app.user.email }}</p>
+          <p class="card-text">Zip-code: {{ app.user.zipcode }}</p>
+          <p class="card-text">City: {{ app.user.city }}</p>
+        </div>
+    </div>
+    
 </div>
 {% endblock %}

@@ -146,10 +146,17 @@ class ProductsController extends AbstractController
     }
 
     #[Route('/suppression/{id}', name: 'delete')]
-    public function delete(Products $product): Response
+    public function delete(Products $product , EntityManagerInterface $em): Response
     {
         // On vérifie si l'utilisateur peut supprimer avec le Voter
         $this->denyAccessUnlessGranted('PRODUCT_DELETE', $product);
+
+
+        // Remove the product from the EntityManager
+    $em->remove($product);
+    $em->flush();
+
+    $this->addFlash('success', 'Produit supprimé avec succès');
 
         return $this->render('admin/products/index.html.twig');
     }
@@ -178,5 +185,7 @@ class ProductsController extends AbstractController
 
         return new JsonResponse(['error' => 'Token invalide'], 400);
     }
+
+    
 
 }
